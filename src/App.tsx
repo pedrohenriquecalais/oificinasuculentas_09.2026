@@ -157,14 +157,13 @@ function App() {
             <div className="benefit-card reveal">
               <span className="benefit-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9Z" />
-                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-                  <path d="m3 3 18 18" />
+                  <path d="M12 3 4 6v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V6l-8-3Z" />
+                  <path d="m9 12 2 2 4-4" />
                 </svg>
               </span>
               <span className="benefit-text">
-                <p className="benefit-title">Zero spam</p>
-                <p className="benefit-desc">Só avisos que realmente importam, sem enrolação.</p>
+                <p className="benefit-title">Compra segura</p>
+                <p className="benefit-desc">Seus dados e pagamento protegidos do pedido até a entrega.</p>
               </span>
               <svg className="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
             </div>
