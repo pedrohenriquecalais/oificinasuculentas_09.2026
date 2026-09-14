@@ -45,12 +45,39 @@
   gap: 16px;
 }
 .eyebrow {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 14px 30px;
+  border-radius: 20px;
+  background: var(--laranja-cta);
+  box-shadow: 0 12px 28px -12px rgba(194, 79, 23, 0.75);
+  animation: eyebrow-pulse 2.4s ease-in-out infinite;
+}
+.eyebrow-label {
+  font-family: var(--font-display);
+  font-size: clamp(21px, 5vw, 27px);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.1;
+  color: var(--creme);
+}
+.eyebrow-dates {
   font-family: var(--font-label);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--dourado-caqui);
+  color: var(--creme);
+  opacity: 0.92;
+}
+@keyframes eyebrow-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 12px 28px -12px rgba(194, 79, 23, 0.75); }
+  50% { transform: scale(1.035); box-shadow: 0 16px 36px -12px rgba(194, 79, 23, 0.9); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow { animation: none; }
 }
 
 .banner-headline {

@@ -44,7 +44,10 @@ function App() {
       {/* ============ TOPO: oferta + CTA principal ============ */}
       <header className="top-banner">
         <div className="top-banner-inner">
-          <p className="eyebrow reveal">Semana do Consumidor</p>
+          <p className="eyebrow reveal">
+            <span className="eyebrow-label">Semana do Cliente</span>
+            <span className="eyebrow-dates">15 a 18 de setembro</span>
+          </p>
 
           <h1 className="banner-headline reveal">
             Condição exclusiva para o <span className="accent">Clube VIP</span>
@@ -70,8 +73,8 @@ function App() {
       <section className="how-section">
         <div className="how-inner">
           <p className="how-lead reveal">
-            Nas edições especiais — como a Semana do Consumidor — o Clube VIP recebe as condições
-            primeiro, direto no WhatsApp.
+            Nas edições especiais — como a Semana do Cliente (15 a 18 de setembro) — o Clube VIP
+            recebe as condições primeiro, direto no WhatsApp.
           </p>
           <p className="how-kicker reveal">Entenda como funciona</p>
 
@@ -135,7 +138,7 @@ function App() {
               </span>
               <span className="benefit-text">
                 <p className="benefit-title">Condições exclusivas</p>
-                <p className="benefit-desc">Preços especiais em datas como a Semana do Consumidor.</p>
+                <p className="benefit-desc">Preços especiais em datas como a Semana do Cliente.</p>
               </span>
               <svg className="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
             </div>

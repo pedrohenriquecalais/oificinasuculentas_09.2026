@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Oficina das Suculentas — Clube VIP</title>
-<meta name="description" content="Semana do Consumidor: condição exclusiva para o Clube VIP da Oficina das Suculentas." />
+<meta name="description" content="Semana do Cliente (15 a 18 de setembro): condição exclusiva para o Clube VIP da Oficina das Suculentas." />
 
 <!-- =====================================================================
      TIPOGRAFIA
@@ -119,12 +119,39 @@ button:focus-visible {
 
 
 .eyebrow {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 14px 30px;
+  border-radius: 20px;
+  background: var(--laranja-cta);
+  box-shadow: 0 12px 28px -12px rgba(194, 79, 23, 0.75);
+  animation: eyebrow-pulse 2.4s ease-in-out infinite;
+}
+.eyebrow-label {
+  font-family: var(--font-display);
+  font-size: clamp(21px, 5vw, 27px);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.1;
+  color: var(--creme);
+}
+.eyebrow-dates {
   font-family: var(--font-label);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--dourado-caqui);
+  color: var(--creme);
+  opacity: 0.92;
+}
+@keyframes eyebrow-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 12px 28px -12px rgba(194, 79, 23, 0.75); }
+  50% { transform: scale(1.035); box-shadow: 0 16px 36px -12px rgba(194, 79, 23, 0.9); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow { animation: none; }
 }
 
 .banner-headline {
@@ -451,7 +478,10 @@ button:focus-visible {
 
 <header class="top-banner">
   <div class="top-banner-inner">
-    <p class="eyebrow reveal">Semana do Consumidor</p>
+    <p class="eyebrow reveal">
+      <span class="eyebrow-label">Semana do Cliente</span>
+      <span class="eyebrow-dates">15 a 18 de setembro</span>
+    </p>
 
     <h1 class="banner-headline reveal">
       Condição exclusiva para o <span class="accent">Clube VIP</span>
@@ -482,7 +512,7 @@ button:focus-visible {
 <section class="how-section">
   <div class="how-inner">
     <p class="how-lead reveal">
-      Nas edições especiais — como a Semana do Consumidor — o Clube VIP recebe as condições primeiro, direto no WhatsApp.
+      Nas edições especiais — como a Semana do Cliente (15 a 18 de setembro) — o Clube VIP recebe as condições primeiro, direto no WhatsApp.
     </p>
     <p class="how-kicker reveal">Entenda como funciona</p>
 
@@ -546,7 +576,7 @@ button:focus-visible {
         </span>
         <span class="benefit-text">
           <p class="benefit-title">Condições exclusivas</p>
-          <p class="benefit-desc">Preços especiais em datas como a Semana do Consumidor.</p>
+          <p class="benefit-desc">Preços especiais em datas como a Semana do Cliente.</p>
         </span>
         <svg class="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
       </div>
