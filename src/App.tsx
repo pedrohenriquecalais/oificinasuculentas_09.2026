@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import type { FormEvent } from 'react'
 import './App.css'
 import logo from './assets/logo.png'
 import adrianaPhoto from './assets/adriana-feature.jpeg'
@@ -8,7 +9,126 @@ import entregaPhoto from './assets/step-entrega.jpeg'
 const VIP_GROUP_URL =
   'https://chat.whatsapp.com/BRszbr7S4lELIRbj09Y1FS?s=cl&p=i&mlu=4&ilr=4'
 
+// URL do Google Apps Script (Web App) que grava nome + telefone na planilha.
+// Configurada em .env como VITE_LEADS_WEBHOOK_URL (veja .env.example).
+const LEADS_WEBHOOK_URL = import.meta.env.VITE_LEADS_WEBHOOK_URL as string | undefined
+
+function VipGroupModal({ onClose }: { onClose: () => void }) {
+  const [name, setName] = useState('')
+  const [phone, setPhone] = useState('')
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle')
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', onKeyDown)
+    document.body.classList.add('modal-open')
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.body.classList.remove('modal-open')
+    }
+  }, [onClose])
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+
+    const trimmedName = name.trim()
+    const trimmedPhone = phone.trim()
+    if (!trimmedName || trimmedPhone.replace(/\D/g, '').length < 10) {
+      setStatus('error')
+      return
+    }
+
+    setStatus('submitting')
+
+    if (LEADS_WEBHOOK_URL) {
+      try {
+        // O Apps Script não responde com cabeçalhos CORS, então usamos
+        // no-cors: o envio funciona normalmente, só não lemos a resposta.
+        await fetch(LEADS_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify({
+            nome: trimmedName,
+            telefone: trimmedPhone,
+            origem: 'LP Clube VIP',
+            data: new Date().toISOString(),
+          }),
+        })
+      } catch {
+        // Segue o fluxo mesmo se a rede falhar: não queremos travar o
+        // acesso ao grupo por causa da planilha.
+      }
+    }
+
+    window.open(VIP_GROUP_URL, '_blank', 'noopener,noreferrer')
+    onClose()
+  }
+
+  return (
+    <div className="modal-overlay" role="presentation" onClick={onClose}>
+      <div
+        className="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="vip-modal-title"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="modal-close" type="button" aria-label="Fechar" onClick={onClose}>
+          ×
+        </button>
+
+        <h2 id="vip-modal-title" className="modal-title">
+          Quase lá! Só mais um passo
+        </h2>
+        <p className="modal-subtitle">
+          Preencha seus dados para entrar no Clube VIP e ser redirecionado ao grupo no WhatsApp.
+        </p>
+
+        <form className="modal-form" onSubmit={handleSubmit} noValidate>
+          <label className="modal-field">
+            <span>Nome</span>
+            <input
+              type="text"
+              name="nome"
+              autoComplete="name"
+              placeholder="Seu nome"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+
+          <label className="modal-field">
+            <span>Telefone / WhatsApp</span>
+            <input
+              type="tel"
+              name="telefone"
+              autoComplete="tel"
+              placeholder="(00) 00000-0000"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </label>
+
+          {status === 'error' && (
+            <p className="modal-error">Preencha nome e telefone válidos para continuar.</p>
+          )}
+
+          <button className="cta modal-submit" type="submit" disabled={status === 'submitting'}>
+            {status === 'submitting' ? 'Enviando...' : 'Entrar no grupo VIP'}
+            <span className="cta-arrow" aria-hidden="true">→</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  )
+}
+
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   // Reveal-on-scroll, feito só com opacity/transform (GPU-friendly) e
   // desligado quando o usuário pede prefers-reduced-motion.
   useEffect(() => {
@@ -57,10 +177,10 @@ function App() {
             Quer aproveitar primeiro? Entre agora no nosso Clube VIP.
           </p>
 
-          <a className="cta reveal" href={VIP_GROUP_URL} target="_blank" rel="noopener noreferrer">
+          <button className="cta reveal" type="button" onClick={() => setIsModalOpen(true)}>
             Entrar no grupo VIP
             <span className="cta-arrow" aria-hidden="true">→</span>
-          </a>
+          </button>
 
           <p className="scarcity reveal">
             <span className="scarcity-dot" aria-hidden="true" />
@@ -179,10 +299,10 @@ function App() {
         <div className="footer-inner">
           <h2 className="footer-title reveal">Não fique de fora do Clube VIP</h2>
 
-          <a className="cta reveal" href={VIP_GROUP_URL} target="_blank" rel="noopener noreferrer">
+          <button className="cta reveal" type="button" onClick={() => setIsModalOpen(true)}>
             Entrar no grupo VIP
             <span className="cta-arrow" aria-hidden="true">→</span>
-          </a>
+          </button>
 
           <p className="fine-print reveal">
             As ofertas especiais serão liberadas exclusivamente para os membros do Clube VIP.
@@ -190,6 +310,8 @@ function App() {
           <p className="brand-tagline">Oficina das Suculentas — cultivo, cuidado e curadoria</p>
         </div>
       </footer>
+
+      {isModalOpen && <VipGroupModal onClose={() => setIsModalOpen(false)} />}
     </>
   )
 }
