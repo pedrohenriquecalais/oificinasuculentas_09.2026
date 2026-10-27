@@ -27,8 +27,8 @@
   --verde-salvia:   #9DA275;
   --dourado-caqui:  #B9AF6F;
   --dourado-escuro: #857E36;
-  --creme:          #EFE9DC;
-  --creme-banda:    #E7E1CC; /* variação um pouco mais escura, pra separar seções creme */
+  --creme:          #ECEEE2;
+  --creme-banda:    #DFE1D0; /* variação um pouco mais escura, pra separar seções creme */
   --terracota:      #A15A3C;
   --terracota-escura:#82452D;
   --laranja-cta:      #E2611F;
@@ -256,15 +256,15 @@ button:focus-visible {
   justify-content: center;
   gap: 10px;
   width: 100%;
-  max-width: 340px;
-  padding: 17px 22px;
+  max-width: 380px;
+  padding: 20px 26px;
   margin-top: 4px;
   border-radius: 12px;
   background: var(--laranja-cta);
   color: var(--creme);
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 16.5px;
+  font-size: 18px;
   text-decoration: none;
   border: none;
   cursor: pointer;
@@ -294,30 +294,6 @@ button:focus-visible {
 .cta-arrow { transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .cta:hover .cta-arrow { transform: translateX(5px); }
 
-.scarcity {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin: 0;
-  padding: 7px 14px;
-  border: 1px solid rgba(185, 175, 111, 0.3);
-  border-radius: 999px;
-  text-align: left;
-  line-height: 1.4;
-  font-family: var(--font-label);
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--dourado-caqui);
-}
-.scarcity-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--terracota);
-  box-shadow: 0 0 0 4px rgba(161, 90, 60, 0.3);
-  flex-shrink: 0;
-}
 
 /* =========================================================================
    FAIXA ANIMADA — letreiro laranja da Pré Black Friday
@@ -457,7 +433,7 @@ button:focus-visible {
 }
 
 /* =========================================================================
-   5. BENEFÍCIOS — faixa clara, cartões com ícone + texto
+   5. BENEFÍCIOS — faixa clara, cartões em formato de cupom (Pré Black Friday)
    ========================================================================= */
 .benefits-section {
   background: var(--creme-banda);
@@ -481,34 +457,63 @@ button:focus-visible {
   gap: 16px;
 }
 .benefit-card {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 14px;
   background: var(--creme);
   border-radius: 14px;
-  padding: 16px 18px;
+  padding: 20px 24px;
   text-align: left;
-  box-shadow: 0 10px 24px -16px var(--sombra-escura);
-  border-left: 4px solid var(--accent, var(--verde-oliva));
+  outline: 1.5px dashed var(--dourado-caqui);
+  outline-offset: -7px;
+  box-shadow: 0 14px 28px -18px var(--sombra-escura);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
 }
-.benefit-card:nth-child(1) { --accent: var(--terracota); }
-.benefit-card:nth-child(2) { --accent: var(--dourado-escuro); }
-.benefit-card:nth-child(3) { --accent: var(--verde-oliva); }
-.benefit-card:nth-child(4) { --accent: var(--verde-musgo); }
+/* recortes laterais de cupom, na cor do fundo da seção */
+.benefit-card::before,
+.benefit-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  border-radius: 50%;
+  background: var(--creme-banda);
+}
+.benefit-card::before {
+  left: -8px;
+}
+.benefit-card::after {
+  right: -8px;
+}
+.benefit-card:hover {
+  transform: translateY(-3px) rotate(-1deg);
+  box-shadow: 0 20px 32px -18px var(--sombra-escura);
+}
 .benefit-icon {
   flex-shrink: 0;
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--accent) 18%, var(--creme));
+  background: var(--preto);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 6px 14px -6px var(--sombra-escura);
 }
-.benefit-icon svg { width: 20px; height: 20px; color: var(--accent); }
-.benefit-text { flex: 1; min-width: 0; }
+.benefit-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--dourado-caqui);
+}
+.benefit-text {
+  flex: 1;
+  min-width: 0;
+}
 .benefit-title {
-  margin: 0 0 2px;
+  margin: 0 0 3px;
   font-weight: 600;
   font-size: 14.5px;
   color: var(--verde-escuro);
@@ -523,7 +528,7 @@ button:focus-visible {
   flex-shrink: 0;
   width: 16px;
   height: 16px;
-  color: var(--verde-salvia);
+  color: var(--terracota);
 }
 
 /* =========================================================================
@@ -554,6 +559,13 @@ button:focus-visible {
 .footer-title .accent {
   color: var(--dourado-caqui);
   font-style: italic;
+}
+.footer-sub {
+  margin: -6px 0 4px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--creme);
+  opacity: 0.85;
 }
 .fine-print {
   margin: 6px 0 0;
@@ -758,11 +770,6 @@ body.modal-open { overflow: hidden; }
       Quero entrar no Clube VIP
       <span class="cta-arrow" aria-hidden="true">→</span>
     </button>
-
-    <p class="scarcity reveal">
-      <span class="scarcity-dot" aria-hidden="true"></span>
-      Não fique de fora. As melhores oportunidades esperam por você!
-    </p>
   </div>
 </header>
 
@@ -882,6 +889,7 @@ body.modal-open { overflow: hidden; }
 <footer class="site-footer">
   <div class="footer-inner">
     <h2 class="footer-title reveal">Não fique de fora da <span class="accent">Pré Black Friday</span></h2>
+    <p class="footer-sub reveal">As melhores oportunidades esperam por você!</p>
 
     <button type="button" class="cta reveal" data-vip-cta>
       Quero entrar no Clube VIP

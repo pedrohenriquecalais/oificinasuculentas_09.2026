@@ -192,11 +192,6 @@ function App() {
             Quero entrar no Clube VIP
             <span className="cta-arrow" aria-hidden="true">→</span>
           </button>
-
-          <p className="scarcity reveal">
-            <span className="scarcity-dot" aria-hidden="true" />
-            Não fique de fora. As melhores oportunidades esperam por você!
-          </p>
         </div>
       </header>
 
@@ -316,6 +311,7 @@ function App() {
       <footer className="site-footer">
         <div className="footer-inner">
           <h2 className="footer-title reveal">Não fique de fora da <span className="accent">Pré Black Friday</span></h2>
+          <p className="footer-sub reveal">As melhores oportunidades esperam por você!</p>
 
           <button className="cta reveal" type="button" onClick={() => setIsModalOpen(true)}>
             Quero entrar no Clube VIP
