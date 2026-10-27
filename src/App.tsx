@@ -3,7 +3,7 @@ import type { FormEvent } from 'react'
 import './App.css'
 import logo from './assets/logo.png'
 import adrianaPhoto from './assets/adriana-feature.jpeg'
-import adrianaHeroPhoto from './assets/adriana-calais.jpg'
+import heroPhoto from './assets/hero-suculentas.jpg'
 import plantasPhoto from './assets/step-plantas.jpeg'
 
 const VIP_GROUP_URL =
@@ -163,7 +163,7 @@ function App() {
 
       {/* ============ TOPO: Pré Black Friday + CTA principal ============ */}
       <header className="top-banner">
-        <img className="bf-hero-bg" src={adrianaHeroPhoto} alt="" aria-hidden="true" />
+        <img className="bf-hero-bg" src={heroPhoto} alt="" aria-hidden="true" />
         <div className="top-banner-inner">
           <p className="bf-dates reveal">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
