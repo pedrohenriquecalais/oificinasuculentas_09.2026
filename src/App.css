@@ -17,20 +17,22 @@
 }
 
 /* =========================================================================
-   TOPO — faixa escura com a oferta e o CTA principal
+   TOPO — faixa preta da Pré Black Friday com a oferta e o CTA principal
    ========================================================================= */
 .top-banner {
   position: relative;
-  background: var(--verde-escuro);
+  background: var(--preto);
   color: var(--creme);
   overflow: hidden;
+  box-shadow: inset 0 0 0 12px var(--preto), inset 0 0 0 13px rgba(185, 175, 111, 0.35);
 }
 .top-banner::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 16% 0%, rgba(157, 162, 117, 0.22), transparent 48%),
-    radial-gradient(circle at 88% 90%, rgba(133, 126, 54, 0.28), transparent 45%);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(185, 175, 111, 0.2), transparent 60%),
+    radial-gradient(circle at 92% 100%, rgba(91, 101, 65, 0.35), transparent 45%);
   pointer-events: none;
 }
 .top-banner-inner {
@@ -44,53 +46,123 @@
   text-align: center;
   gap: 16px;
 }
-.eyebrow {
+/* ---------- Pré Black Friday: datas, título e selo de desconto ---------- */
+.bf-dates {
   display: inline-flex;
-  flex-direction: column;
   align-items: center;
-  gap: 2px;
-  padding: 14px 30px;
-  border-radius: 20px;
-  background: var(--laranja-cta);
-  box-shadow: 0 12px 28px -12px rgba(194, 79, 23, 0.75);
-  animation: eyebrow-pulse 2.4s ease-in-out infinite;
-}
-.eyebrow-label {
-  font-family: var(--font-display);
-  font-size: clamp(21px, 5vw, 27px);
-  font-weight: 800;
-  font-style: italic;
-  line-height: 1.1;
-  color: var(--creme);
-}
-.eyebrow-dates {
+  gap: 8px;
+  margin: 0;
+  padding: 8px 16px;
+  border: 1.5px solid var(--dourado-caqui);
+  border-radius: 999px;
   font-family: var(--font-label);
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--creme);
-  opacity: 0.92;
+  background: rgba(185, 175, 111, 0.1);
 }
-@keyframes eyebrow-pulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 12px 28px -12px rgba(194, 79, 23, 0.75); }
-  50% { transform: scale(1.035); box-shadow: 0 16px 36px -12px rgba(194, 79, 23, 0.9); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .eyebrow { animation: none; }
+.bf-dates svg {
+  width: 16px;
+  height: 16px;
+  color: var(--dourado-caqui);
+  flex-shrink: 0;
 }
 
-.banner-headline {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(34px, 6.6vw, 54px);
-  line-height: 1.08;
-  margin: 0;
-  text-wrap: balance;
+.bf-title {
+  margin: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
 }
-.banner-headline .accent {
-  color: var(--terracota);
+.bf-title-pre {
+  font-family: var(--font-display);
   font-style: italic;
+  font-weight: 700;
+  font-size: clamp(30px, 7vw, 44px);
+  color: var(--dourado-caqui);
+  margin-bottom: -2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.bf-title-pre::before,
+.bf-title-pre::after {
+  content: '';
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--dourado-caqui));
+}
+.bf-title-pre::after {
+  transform: scaleX(-1);
+}
+.bf-title-main {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(46px, 13vw, 92px);
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: var(--creme);
+  background: linear-gradient(180deg, var(--creme) 45%, #d8cd94);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+}
+
+.bf-discount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+  margin: 6px 0 4px;
+  padding: 14px 22px;
+  border-radius: 18px;
+  background: var(--creme);
+  color: var(--preto);
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.7);
+  outline: 1.5px dashed var(--dourado-escuro);
+  outline-offset: -7px;
+  transform: rotate(-2deg);
+  animation: bf-pulse 2.4s ease-in-out infinite;
+}
+.bf-discount-label {
+  max-width: 70px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: right;
+}
+.bf-discount-value {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(54px, 15vw, 104px);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+}
+.bf-discount-off {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--terracota);
+  color: var(--creme);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(20px, 5vw, 28px);
+  line-height: 1;
+}
+@keyframes bf-pulse {
+  0%, 100% { transform: rotate(-2deg) scale(1); }
+  50% { transform: rotate(-2deg) scale(1.035); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bf-discount { animation: none; }
 }
 
 .banner-sub {
@@ -120,6 +192,8 @@
   font-weight: 600;
   font-size: 16.5px;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
   overflow: hidden;
   isolation: isolate;
   box-shadow: 0 16px 30px -14px rgba(194, 79, 23, 0.65);
@@ -157,7 +231,13 @@
 .scarcity {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 9px;
+  margin: 0;
+  padding: 7px 14px;
+  border: 1px solid rgba(185, 175, 111, 0.3);
+  border-radius: 999px;
+  text-align: left;
+  line-height: 1.4;
   font-family: var(--font-label);
   font-size: 11.5px;
   font-weight: 600;
@@ -169,7 +249,53 @@
   height: 6px;
   border-radius: 50%;
   background: var(--terracota);
+  box-shadow: 0 0 0 4px rgba(161, 90, 60, 0.3);
   flex-shrink: 0;
+}
+
+/* =========================================================================
+   FAIXA ANIMADA — letreiro laranja da Pré Black Friday
+   ========================================================================= */
+.bf-ticker {
+  overflow: hidden;
+  background: var(--dourado-caqui);
+  color: var(--preto);
+  border-block: 2px solid var(--preto);
+}
+.bf-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: bf-ticker 28s linear infinite;
+}
+.bf-ticker-group {
+  display: flex;
+  flex-shrink: 0;
+}
+.bf-ticker-group span {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 0;
+  font-family: var(--font-label);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.bf-ticker-group span::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  margin: 0 24px;
+  border-radius: 1px;
+  background: var(--terracota);
+  transform: rotate(45deg);
+}
+@keyframes bf-ticker {
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bf-ticker-track { animation: none; }
 }
 
 /* =========================================================================
@@ -354,10 +480,12 @@
 }
 
 /* =========================================================================
-   RODAPÉ — repete a faixa escura, CTA final + letra miúda
+   RODAPÉ — repete a faixa preta, CTA final + letra miúda
    ========================================================================= */
 .site-footer {
-  background: var(--verde-escuro);
+  background: var(--preto);
+  border-top: 3px solid var(--dourado-caqui);
+  box-shadow: inset 0 0 0 12px var(--preto), inset 0 0 0 13px rgba(185, 175, 111, 0.35);
   color: var(--creme);
   text-align: center;
   padding: 52px 24px 40px;
@@ -375,6 +503,10 @@
   font-weight: 700;
   font-size: clamp(22px, 4vw, 28px);
   margin: 0;
+}
+.footer-title .accent {
+  color: var(--dourado-caqui);
+  font-style: italic;
 }
 .fine-print {
   margin: 6px 0 0;
