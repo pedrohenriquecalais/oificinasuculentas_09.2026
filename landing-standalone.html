@@ -232,7 +232,7 @@ button:focus-visible {
 /* ---------- Foto de suculentas como pano de fundo do topo, dissolvendo no escuro ---------- */
 .bf-hero-bg {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   height: 300px;
@@ -240,8 +240,8 @@ button:focus-visible {
   object-fit: cover;
   object-position: center 55%;
   filter: saturate(0.9) brightness(0.9);
-  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, #000 45%, transparent 100%);
+  mask-image: linear-gradient(to top, #000 45%, transparent 100%);
   pointer-events: none;
 }
 
@@ -252,10 +252,12 @@ button:focus-visible {
 .top-banner-inner > .banner-sub { grid-area: sub; }
 .top-banner-inner > .cta { grid-area: cta; }
 
-/* celular: o texto começa onde a foto se dissolve */
+/* celular: a foto fica embaixo, depois do botão, dissolvendo para cima */
 @media (max-width: 899px) {
   .top-banner > .top-banner-inner {
-    padding-top: 236px;
+    padding-top: 56px;
+    padding-bottom: 300px;
+    gap: 20px;
   }
 }
 
