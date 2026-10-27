@@ -40,9 +40,10 @@
   max-width: 640px;
   margin: 0 auto;
   padding: 44px 24px 52px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  z-index: 1;
+  grid-template-areas: 'dates' 'title' 'discount' 'sub' 'cta';
+  justify-items: center;
   text-align: center;
   gap: 16px;
 }
@@ -117,52 +118,104 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 14px;
   max-width: 100%;
-  margin: 6px 0 4px;
-  padding: 14px 22px;
-  border-radius: 18px;
-  background: var(--creme);
-  color: var(--preto);
-  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.7);
-  outline: 1.5px dashed var(--dourado-escuro);
-  outline-offset: -7px;
-  transform: rotate(-2deg);
-  animation: bf-pulse 2.4s ease-in-out infinite;
+  margin: 4px 0 2px;
 }
 .bf-discount-label {
-  max-width: 70px;
+  max-width: 76px;
+  padding-right: 14px;
+  border-right: 1px solid rgba(185, 175, 111, 0.5);
   font-family: var(--font-label);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: 0.06em;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: right;
+  color: var(--dourado-caqui);
 }
 .bf-discount-value {
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: clamp(54px, 15vw, 104px);
+  font-size: clamp(64px, 18vw, 112px);
   line-height: 0.85;
   letter-spacing: -0.03em;
+  background: linear-gradient(180deg, var(--creme) 35%, #d8cd94);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .bf-discount-off {
-  padding: 6px 10px;
-  border-radius: 8px;
-  background: var(--terracota);
-  color: var(--creme);
-  font-family: var(--font-body);
+  font-family: var(--font-display);
+  font-style: italic;
   font-weight: 700;
-  font-size: clamp(20px, 5vw, 28px);
+  font-size: clamp(30px, 8vw, 46px);
   line-height: 1;
+  color: var(--terracota);
+  filter: brightness(1.35);
 }
-@keyframes bf-pulse {
-  0%, 100% { transform: rotate(-2deg) scale(1); }
-  50% { transform: rotate(-2deg) scale(1.035); }
+
+/* ---------- Foto da Adriana como pano de fundo do topo, dissolvendo no escuro ---------- */
+.bf-hero-bg {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  right: 13px;
+  height: 300px;
+  width: calc(100% - 26px);
+  object-fit: cover;
+  object-position: center 22%;
+  filter: saturate(0.9) brightness(0.9);
+  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  pointer-events: none;
 }
-@media (prefers-reduced-motion: reduce) {
-  .bf-discount { animation: none; }
+
+/* posições no grid do topo */
+.bf-dates { grid-area: dates; }
+.bf-title { grid-area: title; }
+.bf-discount { grid-area: discount; }
+.top-banner-inner > .banner-sub { grid-area: sub; }
+.top-banner-inner > .cta { grid-area: cta; }
+
+/* celular: o texto começa onde a foto se dissolve */
+@media (max-width: 899px) {
+  .top-banner > .top-banner-inner {
+    padding-top: 236px;
+  }
+}
+
+/* desktop: texto à esquerda, foto ocupando o lado direito */
+@media (min-width: 900px) {
+  .bf-hero-bg {
+    top: 13px;
+    bottom: 13px;
+    left: auto;
+    right: 13px;
+    width: 58%;
+    height: calc(100% - 26px);
+    object-position: center 30%;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 45%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 45%);
+  }
+  .top-banner-inner {
+    max-width: 1080px;
+    padding: 72px 48px 80px;
+    grid-template-columns: minmax(0, 520px);
+    justify-content: start;
+    justify-items: start;
+    text-align: left;
+  }
+  .bf-title {
+    align-items: flex-start;
+  }
+  .bf-title-pre::before {
+    display: none;
+  }
+  .banner-sub {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  }
 }
 
 .banner-sub {
@@ -307,7 +360,9 @@
 
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 620px;
+  margin: 0 auto;
   gap: 28px;
 }
 .step-card {
@@ -334,9 +389,6 @@
 }
 .step-card:nth-child(2) .step-icon-panel img {
   object-position: center 42%;
-}
-.step-card:nth-child(3) .step-icon-panel img {
-  object-position: center 50%;
 }
 .step-number {
   position: absolute;

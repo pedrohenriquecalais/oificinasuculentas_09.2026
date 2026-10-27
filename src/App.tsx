@@ -3,8 +3,8 @@ import type { FormEvent } from 'react'
 import './App.css'
 import logo from './assets/logo.png'
 import adrianaPhoto from './assets/adriana-feature.jpeg'
+import adrianaHeroPhoto from './assets/adriana-calais.jpg'
 import plantasPhoto from './assets/step-plantas.jpeg'
-import entregaPhoto from './assets/step-entrega.jpeg'
 
 const VIP_GROUP_URL =
   'https://chat.whatsapp.com/BRszbr7S4lELIRbj09Y1FS?s=cl&p=i&mlu=4&ilr=4'
@@ -163,6 +163,7 @@ function App() {
 
       {/* ============ TOPO: Pré Black Friday + CTA principal ============ */}
       <header className="top-banner">
+        <img className="bf-hero-bg" src={adrianaHeroPhoto} alt="" aria-hidden="true" />
         <div className="top-banner-inner">
           <p className="bf-dates reveal">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -229,15 +230,6 @@ function App() {
               <h3 className="step-title">Novidades em primeira mão</h3>
               <p className="step-desc">Veja cada nova leva de suculentas antes de todo mundo, assim que chegam na Oficina.</p>
             </div>
-
-            <div className="step-card reveal">
-              <div className="step-icon-panel">
-                <span className="step-number" aria-hidden="true">3</span>
-                <img src={entregaPhoto} alt="Caixas de suculentas embaladas prontas para entrega em todo o Brasil" />
-              </div>
-              <h3 className="step-title">Entrega para todo o Brasil</h3>
-              <p className="step-desc">Suas suculentas favoritas, embaladas com cuidado e enviadas para qualquer cidade do país.</p>
-            </div>
           </div>
         </div>
       </section>
@@ -299,7 +291,7 @@ function App() {
               </span>
               <span className="benefit-text">
                 <p className="benefit-title">Compra segura</p>
-                <p className="benefit-desc">Seus dados e pagamento protegidos do pedido até a entrega.</p>
+                <p className="benefit-desc">Seus dados e seu pagamento sempre protegidos.</p>
               </span>
               <svg className="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
             </div>
