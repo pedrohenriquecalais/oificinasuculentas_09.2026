@@ -7,7 +7,7 @@ import heroPhoto from './assets/hero-suculentas.jpg'
 import plantasPhoto from './assets/step-plantas.jpeg'
 
 const VIP_GROUP_URL =
-  'https://chat.whatsapp.com/BRszbr7S4lELIRbj09Y1FS?s=cl&p=i&mlu=4&ilr=4'
+  'https://chat.whatsapp.com/IKI1CdPHa2W95c4q9sHD28?s=cl&p=i&mlu=4&ilr=4&iam=2'
 
 // URL do Google Apps Script (Web App) que grava nome + telefone na planilha.
 // Configurada em .env como VITE_LEADS_WEBHOOK_URL (veja .env.example).
@@ -277,7 +277,7 @@ function App() {
               </span>
               <span className="benefit-text">
                 <p className="benefit-title">Dicas de cultivo</p>
-                <p className="benefit-desc">Orientações de cuidado direto da nossa fundaora, Adriana Calais.</p>
+                <p className="benefit-desc">Orientações de cuidado direto da nossa fundadora, Adriana Calais.</p>
               </span>
               <svg className="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
             </div>
