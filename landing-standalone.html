@@ -87,7 +87,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px -8px rgba(0, 0, 0, 0.35);
+  border-bottom: 3px solid var(--dourado-caqui);
 }
 .site-header-logo { height: 60px; width: auto; display: block; }
 
@@ -155,7 +155,7 @@ button:focus-visible {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 700;
-  font-size: clamp(30px, 7vw, 44px);
+  font-size: clamp(32px, 8vw, 50px);
   color: var(--dourado-caqui);
   margin-bottom: -2px;
   display: inline-flex;
@@ -173,18 +173,25 @@ button:focus-visible {
   transform: scaleX(-1);
 }
 .bf-title-main {
+  display: flex;
+  flex-direction: column;
+  align-items: inherit;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: clamp(46px, 13vw, 92px);
-  letter-spacing: -0.015em;
+  font-size: clamp(58px, 17vw, 124px);
+  letter-spacing: -0.02em;
   text-transform: uppercase;
-  line-height: 0.95;
+  line-height: 0.9;
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.55));
+}
+.bf-title-black {
   color: var(--creme);
-  background: linear-gradient(180deg, var(--creme) 45%, #d8cd94);
+}
+.bf-title-friday {
+  background: linear-gradient(180deg, #e6dca4 10%, var(--dourado-caqui) 90%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
 }
 
 .bf-discount {
@@ -211,7 +218,7 @@ button:focus-visible {
 .bf-discount-value {
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: clamp(64px, 18vw, 112px);
+  font-size: clamp(58px, 16vw, 92px);
   line-height: 0.85;
   letter-spacing: -0.03em;
   background: linear-gradient(180deg, var(--creme) 35%, #d8cd94);
@@ -235,13 +242,13 @@ button:focus-visible {
   top: 0;
   left: 0;
   right: 0;
-  height: 300px;
+  height: 370px;
   width: 100%;
   object-fit: cover;
   object-position: center 55%;
   filter: saturate(0.9) brightness(0.9);
-  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
   pointer-events: none;
 }
 
@@ -255,7 +262,7 @@ button:focus-visible {
 /* celular: a foto abre o topo e o texto começa onde ela se dissolve */
 @media (max-width: 899px) {
   .top-banner > .top-banner-inner {
-    padding-top: 240px;
+    padding-top: 300px;
     padding-bottom: 56px;
     gap: 20px;
   }
@@ -808,7 +815,7 @@ body.modal-open { overflow: hidden; }
 
     <h1 class="bf-title reveal">
       <span class="bf-title-pre">Pré</span>
-      <span class="bf-title-main">Black Friday</span>
+      <span class="bf-title-main"><span class="bf-title-black">Black</span> <span class="bf-title-friday">Friday</span></span>
     </h1>
 
     <p class="bf-discount reveal">

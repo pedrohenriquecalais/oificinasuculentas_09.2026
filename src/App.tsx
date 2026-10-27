@@ -175,7 +175,7 @@ function App() {
 
           <h1 className="bf-title reveal">
             <span className="bf-title-pre">Pré</span>
-            <span className="bf-title-main">Black Friday</span>
+            <span className="bf-title-main"><span className="bf-title-black">Black</span> <span className="bf-title-friday">Friday</span></span>
           </h1>
 
           <p className="bf-discount reveal">
