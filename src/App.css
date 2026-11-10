@@ -17,7 +17,7 @@
 }
 
 /* =========================================================================
-   TOPO — faixa preta da Pré Black Friday com a oferta e o CTA principal
+   TOPO — faixa preta da Black Friday com a oferta e o CTA principal
    ========================================================================= */
 .top-banner {
   position: relative;
@@ -46,7 +46,7 @@
   text-align: center;
   gap: 16px;
 }
-/* ---------- Pré Black Friday: datas, título e selo de desconto ---------- */
+/* ---------- Black Friday: datas, título e selo de desconto ---------- */
 .bf-dates {
   display: inline-flex;
   align-items: center;
@@ -76,27 +76,6 @@
   flex-direction: column;
   align-items: center;
   line-height: 1;
-}
-.bf-title-pre {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 700;
-  font-size: clamp(32px, 8vw, 50px);
-  color: var(--dourado-caqui);
-  margin-bottom: -2px;
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-}
-.bf-title-pre::before,
-.bf-title-pre::after {
-  content: '';
-  width: 44px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--dourado-caqui));
-}
-.bf-title-pre::after {
-  transform: scaleX(-1);
 }
 .bf-title-main {
   display: flex;
@@ -218,9 +197,6 @@
   .bf-title {
     align-items: flex-start;
   }
-  .bf-title-pre::before {
-    display: none;
-  }
   .banner-sub {
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
   }
@@ -291,7 +267,7 @@
 
 
 /* =========================================================================
-   FAIXA ANIMADA — letreiro laranja da Pré Black Friday
+   FAIXA ANIMADA — letreiro laranja da Black Friday
    ========================================================================= */
 .bf-ticker {
   overflow: hidden;
@@ -431,7 +407,7 @@
 }
 
 /* =========================================================================
-   BENEFÍCIOS — faixa clara, cartões em formato de cupom (Pré Black Friday)
+   BENEFÍCIOS — faixa clara, cartões em formato de cupom (Black Friday)
    ========================================================================= */
 .benefits-section {
   background: var(--creme-banda);

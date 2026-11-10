@@ -53,7 +53,7 @@ function VipGroupModal({ onClose }: { onClose: () => void }) {
           body: JSON.stringify({
             nome: trimmedName,
             telefone: trimmedPhone,
-            origem: 'LP Pré Black Friday',
+            origem: 'LP Black Friday',
             data: new Date().toISOString(),
           }),
         })
@@ -161,7 +161,7 @@ function App() {
         <img className="site-header-logo" src={logo} alt="Oficina das Suculentas" />
       </header>
 
-      {/* ============ TOPO: Pré Black Friday + CTA principal ============ */}
+      {/* ============ TOPO: Black Friday + CTA principal ============ */}
       <header className="top-banner">
         <img className="bf-hero-bg" src={heroPhoto} alt="" aria-hidden="true" />
         <div className="top-banner-inner">
@@ -170,11 +170,10 @@ function App() {
               <rect x="3.5" y="5" width="17" height="15" rx="2" />
               <path d="M3.5 10h17M8 3v4M16 3v4" />
             </svg>
-            De 30/10 a 02/11
+            De 19/11 a 22/11
           </p>
 
           <h1 className="bf-title reveal">
-            <span className="bf-title-pre">Pré</span>
             <span className="bf-title-main"><span className="bf-title-black">Black</span> <span className="bf-title-friday">Friday</span></span>
           </h1>
 
@@ -199,8 +198,8 @@ function App() {
       {/* ============ FAIXA ANIMADA: reforço da Black Friday ============ */}
       <div className="bf-ticker" aria-hidden="true">
         <div className="bf-ticker-track">
-          <div className="bf-ticker-group"><span>Pré Black Friday</span><span>Até 75% OFF</span><span>30/10 a 02/11</span><span>Clube VIP no WhatsApp</span></div>
-          <div className="bf-ticker-group"><span>Pré Black Friday</span><span>Até 75% OFF</span><span>30/10 a 02/11</span><span>Clube VIP no WhatsApp</span></div>
+          <div className="bf-ticker-group"><span>Black Friday</span><span>Até 75% OFF</span><span>19/11 a 22/11</span><span>Clube VIP no WhatsApp</span></div>
+          <div className="bf-ticker-group"><span>Black Friday</span><span>Até 75% OFF</span><span>19/11 a 22/11</span><span>Clube VIP no WhatsApp</span></div>
         </div>
       </div>
 
@@ -208,7 +207,7 @@ function App() {
       <section className="how-section">
         <div className="how-inner">
           <p className="how-lead reveal">
-            Na Pré Black Friday — de 30/10 a 02/11 — o Clube VIP recebe todas as ofertas primeiro, direto no WhatsApp.
+            Na Black Friday — de 19/11 a 22/11 — o Clube VIP recebe todas as ofertas primeiro, direto no WhatsApp.
           </p>
           <p className="how-kicker reveal">Entenda como funciona</p>
 
@@ -263,7 +262,7 @@ function App() {
               </span>
               <span className="benefit-text">
                 <p className="benefit-title">Condições exclusivas</p>
-                <p className="benefit-desc">Descontos de até 75% OFF na Pré Black Friday.</p>
+                <p className="benefit-desc">Descontos de até 75% OFF na Black Friday.</p>
               </span>
               <svg className="benefit-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
             </div>
@@ -302,7 +301,7 @@ function App() {
       {/* ============ RODAPÉ: reforço final + CTA ============ */}
       <footer className="site-footer">
         <div className="footer-inner">
-          <h2 className="footer-title reveal">Não fique de fora da <span className="accent">Pré Black Friday</span></h2>
+          <h2 className="footer-title reveal">Não fique de fora da <span className="accent">Black Friday</span></h2>
           <p className="footer-sub reveal">As melhores oportunidades esperam por você!</p>
 
           <button className="cta reveal" type="button" onClick={() => setIsModalOpen(true)}>
@@ -311,7 +310,7 @@ function App() {
           </button>
 
           <p className="fine-print reveal">
-            De 30/10 a 02/11, com descontos de até 75% OFF. As ofertas serão liberadas exclusivamente para os membros do Clube VIP.
+            De 19/11 a 22/11, com descontos de até 75% OFF. As ofertas serão liberadas exclusivamente para os membros do Clube VIP.
           </p>
           <p className="brand-tagline">Oficina das Suculentas — cultivo, cuidado e curadoria</p>
         </div>
